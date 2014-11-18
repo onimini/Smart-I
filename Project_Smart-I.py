@@ -1,73 +1,79 @@
-'''Calculate score for Smart-I examination.'''
 from Tkinter import *
 import tkMessageBox
-    
-class Smart(object):
-        
+
+class First(object):
     def __init__(score):
         score.root = Tk()
-        score.root.title('Smart-I')
+        score.root.geometry("340x260")
+        score.root.title("Smart-I")
 
         score.buttontext = IntVar()
         score.buttontext.set("New Student")
-        Button(score.root, textvariable=score.buttontext, fg='red', command=calculate).grid(row=1)
+        Button(score.root, textvariable=score.buttontext, command=score.button).place(relx=0.5, rely=0.2, anchor=CENTER)
 
-        score.label = Label(score.root, text="Enter your ID Student after you added your point.", ).grid(row=2, sticky=W)
+        score.label = Label(score.root, text="Student ID:").place(relx=0.3, rely=0.5, anchor=CENTER)
 
-        score.id = Label(score.root, text="ID Student:").grid(row=3, sticky=W)
+        score.id = Label(score.root, text="Enter your Id Student after you added your score.").place(relx=0.5, rely=0.3, anchor=CENTER)
         score.intid = IntVar()
-        Entry(score.root, textvariable=score.intid).grid(row=3)
+        Entry(score.root, textvariable=score.intid).place(relx=0.6, rely=0.5, anchor=CENTER)
 
         score.buttontext = IntVar()
         score.buttontext.set("Calculate")
-        Button(score.root, textvariable=score.buttontext, fg='red', bg='black').grid(row=4)
+        Button(score.root, textvariable=score.buttontext).place(relx=0.5, rely=0.7, anchor=CENTER)
 
         score.root.mainloop()
-    
-    def __init__(score):
+
+    def button(score):
+        global lisObject
+        global lisTemp
+        lisObject = []
+        lisTemp = []
         score.root = Tk()
         score.root.title('Smart-I')
-        
         score.label = Label(score.root, text="Enter your score.").grid(row=0)
         
-        score.math = Label(score.root, text="Math:").grid(row=1, sticky=W)
-        score.textmath = IntVar()
-        Entry(score.root, textvariable=score.textmath).grid(row=1, column=1)
+        score.name = Label(score.root, text="Name").grid(row=1)
+        score.txtname = StringVar()
+        Entry(score.root, textvariable=score.txtname).grid(row=1, column=1)
 
-        score.eng = Label(score.root, text="English:").grid(row=2, sticky=W)
-        score.texteng = IntVar()
-        Entry(score.root, textvariable=score.texteng).grid(row=2, column=1)
+        score.surname = Label(score.root, text="Surname").grid(row=2)
+        score.txtsurname = StringVar()
+        Entry(score.root, textvariable=score.txtsurname).grid(row=2, column=1)
 
-        score.read = Label(score.root, text="Reading:").grid(row=3, sticky=W)
-        score.textread = IntVar()
-        Entry(score.root, textvariable=score.textread).grid(row=3, column=1)
+        score.school = Label(score.root, text="School").grid(row=4)
+        score.txtschool = StringVar()
+        Entry(score.root, textvariable=score.txtschool).grid(row=4, column=1)
 
-        score.know = Label(score.root, text="Knowledge:").grid(row=4, sticky=W)
-        score.textknow = IntVar()
-        Entry(score.root, textvariable=score.textknow).grid(row=4, column=1)
+        score.std_id = Label(score.root, text="Student ID").grid(row=5)
+        score.txtID = IntVar()
+        Entry(score.root, textvariable=score.txtID).grid(row=5, column=1)
 
         score.buttontext = IntVar()
-        score.buttontext.set("Calculate")
-        Button(score.root, textvariable=score.buttontext, fg='red', bg='black', command=score.calculate).grid(row=5, column=1)
+        Button(score.root, text="Save", textvariable=score.buttontext, command= score.new).grid(row=6, column=1)        
 
-        score.lalabel = Label(score.root, text="").grid(row=6)
-
+        score.lalabel = Label(score.root, text="").grid(row=8)
         score.root.mainloop()
-        score.root.destroy()
 
-    def calculate(score):
-        root = Tk()
-        '''Input scores of subject in parameter then calculate score
-        from percent of subject which Mathematic(math) English(eng)
-        and Reading(read) will multi with 0.3, Social multi with 0.1
-        then find all plus.'''
-        input = score.textmath.get()
-        input = score.texteng.get()
-        input = score.textread.get()
-        input = score.textknow.get()
-        result = (score.textmath.get() + score.texteng.get() +\
-                  score.textread.get())*0.3 + (score.textknow.get()*0.1)
-        print result
+    def new(score):
+        std = student(score.txtID.get(),score.txtname.get(),score.txtsurname.get(),score.txtschool.get())              
+        lisObject.append(std)
+        lisTemp.append(int(score.txtID.get()))
+        
+    def slis(score):
+        xx = score.txt_in_id.get()
+        print lisObject[lisTemp.index(xx)].show()
+        
+class student():
+    def __init__(std,std_id,name,surname,age,school):
+        std.id = std_id
+        std.name = name
+        std.surname = surname
+        std.age = age
+        std.school = school  
+
+    def show(std):
+        print std.name,std.surname,std.age
+
         
 
-Smart()
+First()
