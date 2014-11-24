@@ -5,7 +5,7 @@ import tkMessageBox
 class First(object):   
     def __init__(score):
         score.root = Tk()
-        score.root.geometry("250x180")
+        score.root.geometry("350x250")
         score.root.title('Smart-I')
 
         score.lalabel = Label(score.root, text=" ").grid(row=0)
@@ -36,16 +36,14 @@ class First(object):
         Button(score.root, textvariable=score.buttontext, command=score.claculate).grid(row=7, column=1)
 
         score.result = Label(score.root, text="Your result:").grid(row=8)
-        Entry(score.root, textvariable="").grid(row=8, column=1)
-
-        score.lalabel = Label(score.root, text="").grid(row=9)
+        Entry(score.root, textvariable="").grid(row=8, column=1)       
 
         score.root.mainloop()
         
     def claculate(score):
         result = Smarti(score.txtmath.get(), score.txteng.get(), score.txtread.get(), score.txtknow.get())
         me = result.calculate()
-        score.lalabel.configure(text=me)
+        score.knowledge = Label(score.root, text=me).grid(row=9, column=0)
 
 class Smarti():
     def __init__(score, math, eng, read, know):
