@@ -18,7 +18,7 @@ class First(object):
 
         helpmenu = Menu(score.menu)
         score.menu.add_cascade(label="Help", menu=helpmenu)
-        helpmenu.add_command(label="About..." ,command=score.about)
+        helpmenu.add_command(label="About..." , command=score.about)
 
         score.lalabel = Label(score.root, text=" ").grid(row=0)
         score.label = Label(score.root, text="SMART-I", fg='red').place(relx=0.5, rely=0.08, anchor=CENTER)
@@ -52,9 +52,19 @@ class First(object):
         score.root.destroy()
         
     def about(score):
-        score.root = Tk()
-        score.label = Label(score.root, text="This program can calculate your Smart-I score for admission in Accounting Faculty at Thammasat University.")
-        score.root.mainloop()
+        score.window = Tk()
+        score.window.geometry("340x280")
+        score.aboutext = Label(score.window, text="This program can calculate your Smart-I score for admission").grid(row=0)
+        score.aboutext2 = Label(score.window, text=" in Accounting Faculty at Thammasat University.").grid(row=1)
+        score.abouttext3 = Label(score.window, text="---------------------------------------------------").grid(row=2)
+        score.abouttext4 = Label(score.window, text="How to use").grid(row=3)
+        score.abouttext4 = Label(score.window, text="---------------------------------------------------").grid(row=4)
+        score.abouttext5 = Label(score.window, text="entry your score smart-I according to subject article.").grid(row=5)
+        score.abouttext6 = Label(score.window, text="program will calculate by math score, reading score").grid(row=6)
+        score.abouttext7 = Label(score.window, text="english score plus together then multiply with zero point three.").grid(row=7)
+        score.abouttext8 = Label(score.window, text="knowledge score multiply with zero point one.").grid(row=8)
+        score.abouttext9 = Label(score.window, text="then all score which already process plus together.").grid(row=9)
+        score.window.mainloop()
         
     def claculate(score):
         result = Smarti(score.txtmath.get(), score.txteng.get(), score.txtread.get(), score.txtknow.get())
