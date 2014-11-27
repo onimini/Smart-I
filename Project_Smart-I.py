@@ -16,8 +16,6 @@ class First(object):
         filemenu = Menu(score.menu)
 
         score.menu.add_cascade(label="File", menu=filemenu)
-        filemenu.add_command(label="New", command=score.new)
-        filemenu.add_separator()
         filemenu.add_command(label="Exit", command=score.root.destroy)
 
         helpmenu = Menu(score.menu)
@@ -89,9 +87,6 @@ class First(object):
         score.abouttext9 = Label(score.window, text="then all score which already process plus together.", font='Cordia_New 8').place(relx=0.5, rely=0.7, anchor=CENTER)
         score.window.mainloop()
 
-    '''Reset values to 0'''
-    def new(score):
-        First()
 
     '''Call Class Smarti for calculate.''' 
     def calculate(score):
@@ -111,10 +106,11 @@ class Smarti():
     '''Print result.'''
     def print_result(score):
         point = (score.math + score.eng + score.read)*0.3 + (score.know*0.1)
-        if point >= 60 and point <= 100:
-            return str(point) + ' ' + 'Maybe Pass.'
-        elif point < 60 and point >= 0:
-            return str(point) + ' ' + 'Maybe Not Pass.'
+        if score.math > 0 and score.eng > 0 and score.read > 0 and score.know > 0: 
+            if point >= 60 and point <= 100:
+                return str(point) + ' ' + 'Maybe Pass.'
+            elif point < 60 and point >= 0:
+                return str(point) + ' ' + 'Maybe Not Pass.'
         else:
             return "Program can not calculate because your score incorrect."
     
