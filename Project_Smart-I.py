@@ -115,3 +115,4 @@ class Smarti():
             return "Program can not calculate because your score incorrect."
     
 First()
+
