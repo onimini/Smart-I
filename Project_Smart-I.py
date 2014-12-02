@@ -14,7 +14,7 @@ class First(object):
         score.menu = Menu(score.root)
         score.root.config(menu=score.menu)
         filemenu = Menu(score.menu)
-
+        
         score.menu.add_cascade(label="File", menu=filemenu)
         filemenu.add_command(label="Exit", command=score.root.destroy)
 
@@ -25,31 +25,30 @@ class First(object):
         '''For insert scores.'''
         score.lalabel = Label(score.root, text=" ").grid(row=0)
         score.label = Label(score.root, text="SMART- I", font='Cordia_New 16 bold italic', fg='red').place(relx=0.5, rely=0.08, anchor=CENTER)
-
         score.label = Label(score.root, text="Enter your scores.", font='Cordia_New 10 bold', fg='blue').place(relx=0.3, rely=0.2, anchor=CENTER)
 
         score.math = Label(score.root, text="Math:", font='Cordia_New 10').place(relx=0.3, rely=0.3, anchor=CENTER)
         score.txtmath = IntVar()
-        Entry(score.root, textvariable=score.txtmath).place(relx=0.7, rely=0.3, anchor=CENTER)
+        Entry(score.root, textvariable=score.txtmath, cursor='cross').place(relx=0.7, rely=0.3, anchor=CENTER)
 
         score.eng = Label(score.root, text="English:", font='Cordia_New 10').place(relx=0.3, rely=0.4, anchor=CENTER)
         score.txteng = IntVar()
-        Entry(score.root, textvariable=score.txteng).place(relx=0.7, rely=0.4, anchor=CENTER)
+        Entry(score.root, textvariable=score.txteng, cursor='cross').place(relx=0.7, rely=0.4, anchor=CENTER)
 
         score.read = Label(score.root, text="Reading:", font='Cordia_New 10').place(relx=0.3, rely=0.5, anchor=CENTER)
         score.txtread = IntVar()
-        Entry(score.root, textvariable=score.txtread).place(relx=0.7, rely=0.5, anchor=CENTER)
-
+        Entry(score.root, textvariable=score.txtread, cursor='cross').place(relx=0.7, rely=0.5, anchor=CENTER)
+        
         score.knowledge = Label(score.root, text="Knowledge:", font='Cordia_New 10').place(relx=0.3, rely=0.6, anchor=CENTER)
         score.txtknow = IntVar()
-        Entry(score.root, textvariable=score.txtknow).place(relx=0.7, rely=0.6, anchor=CENTER)
+        Entry(score.root, textvariable=score.txtknow, cursor='cross').place(relx=0.7, rely=0.6, anchor=CENTER)
         
         '''Button Calculate.'''
         score.buttontext = IntVar()
         score.buttontext.set("Calculate")
-        Button(score.root, textvariable=score.buttontext ,font='Cordia_New 10 bold', command=score.calculate, bd=4, bg='orange').place(relx=0.5, rely=0.74, anchor=CENTER)
+        Button(score.root, textvariable=score.buttontext ,font='Cordia_New 10 bold', command=score.calculate, bd=4, bg='orange', cursor='cross').place(relx=0.5, rely=0.74, anchor=CENTER)
 
-        score.result = Label(score.root, text="Your result:").place(relx=0.5, rely=0.84, anchor=CENTER)                           
+        score.result = Label(score.root, text="Your result:", font='Cordia_New 10 bold').place(relx=0.5, rely=0.86, anchor=CENTER)
 
         score.root.mainloop()
 
@@ -65,8 +64,6 @@ class First(object):
         filemenu = Menu(score.menu)
 
         score.menu.add_cascade(label="File", menu=filemenu)
-        filemenu.add_command(label="New")
-        filemenu.add_separator()
         filemenu.add_command(label="Exit", command=score.window.destroy)
 
         helpmenu = Menu(score.menu)
@@ -91,8 +88,8 @@ class First(object):
     '''Call Class Smarti for calculate.''' 
     def calculate(score):
         result = Smarti(score.txtmath.get(), score.txteng.get(), score.txtread.get(), score.txtknow.get())
-        me = result.print_result()
-        score.knowledge = Label(score.root, text=me).place(relx=0.5, rely=0.9, anchor=CENTER)
+        call_result = result.print_result()
+        score.knowledge = Label(score.root, text=call_result, font='Cordia_New 10').place(relx=0.5, rely=0.93, anchor=CENTER)
 
 '''Class Smarti for calculate and print result.'''  
 class Smarti():
