@@ -1,6 +1,5 @@
 '''SMART-I'''
 from Tkinter import *
-import tkMessageBox
 
 '''Class First for insert scores and show first page.'''
 class First(object):   
@@ -108,6 +107,8 @@ class Smarti():
                 return str(point) + ' ' + 'Maybe Pass.'
             elif point < 60 and point >= 0:
                 return str(point) + ' ' + 'Maybe Not Pass.'
+        if score.math > 100 and score.eng > 100 and score.read > 100 and score.know > 100: 
+            return "Program can not calculate because your score incorrect."
         else:
             return "Program can not calculate because your score incorrect."
     
