@@ -6,7 +6,7 @@ class First(object):
     def __init__(score):
         '''Window Command'''
         score.root = Tk()
-        score.root.geometry("340x280")
+        score.root.geometry("345x300")
         score.root.title('Smart-I')
 
         '''Menu Bar'''
@@ -23,8 +23,8 @@ class First(object):
 
         '''For insert scores.'''
         score.lalabel = Label(score.root, text=" ").grid(row=0)
-        score.label = Label(score.root, text="SMART- I", font='Cordia_New 16 bold italic', fg='red').place(relx=0.5, rely=0.08, anchor=CENTER)
-        score.label = Label(score.root, text="Enter your scores.", font='Cordia_New 10 bold', fg='blue').place(relx=0.3, rely=0.2, anchor=CENTER)
+        score.label = Label(score.root, text="SMART- I", font='Cordia_New 20 bold italic', fg='red').place(relx=0.5, rely=0.08, anchor=CENTER)
+        score.label = Label(score.root, text="Enter your scores.", font='Cordia_New 12 bold', fg='blue').place(relx=0.3, rely=0.2, anchor=CENTER)
 
         score.math = Label(score.root, text="Math:", font='Cordia_New 10').place(relx=0.3, rely=0.3, anchor=CENTER)
         score.txtmath = IntVar()
