@@ -25,7 +25,6 @@ class First(object):
         helpmenu.add_command(label="About..." , command=score.about)
 
         '''For insert scores.'''
-        score.lalabel = Label(score.root, text=" ").grid(row=0)
         score.label = Label(score.root, text="SMART- I", font='Cordia_New 20 bold italic', fg='red', bg='#F4A460').place(relx=0.5, rely=0.08, anchor=CENTER)
         score.label = Label(score.root, text="Enter your scores.", font='Cordia_New 12 bold', fg='blue', bg='#F4A460').place(relx=0.3, rely=0.2, anchor=CENTER)
 
